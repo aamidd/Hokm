@@ -1,10 +1,15 @@
 public class Card {
-    private final int suit; // 0: Club, 1: Diamonds, 2: Hearts, 3: Spades
     private final int rank; // 2 to 14 (ace)
+    private final int suit; // 0: Club, 1: Diamonds, 2: Hearts, 3: Spades
 
     public Card(int rank, int suit) {
         this.rank = rank;
         this.suit = suit;
+    }
+    
+    public Card(String rankStr, String suitStr) {
+        this.rank = parseRank(rankStr);
+        this.suit = parseSuit(suitStr);
     }
 
     public int parseRank(String rank) {
