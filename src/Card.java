@@ -6,4 +6,18 @@ public class Card {
         this.rank = rank;
         this.suit = suit;
     }
+
+    public int parseRank(String rank) {
+        try {
+            return Integer.parseInt(rank);
+        } catch (NumberFormatException e) {
+            return switch (rank.toLowerCase()) {
+                case "jack" -> 11;
+                case "queen" -> 12;
+                case "king" -> 13;
+                case "ace"  -> 14;
+                default -> throw new IllegalArgumentException();
+            };
+        }
+    }
 }
