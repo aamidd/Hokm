@@ -6,7 +6,7 @@ public class Card {
         this.rank = rank;
         this.suit = suit;
     }
-    
+
     public Card(String rankStr, String suitStr) {
         this.rank = parseRank(rankStr);
         this.suit = parseSuit(suitStr);
@@ -34,5 +34,22 @@ public class Card {
             case "spades" -> 3;
             default -> throw new IllegalArgumentException();
         };
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public String getRankStr() {
+        if (getRank() == 11)
+            return "jack";
+        if (getRank() == 12)
+            return "queen";
+        if (getRank() == 13)
+            return "king";
+        if (getRank() == 14)
+            return "ace";
+
+        return String.valueOf(getRank());
     }
 }
