@@ -59,11 +59,16 @@ public class Card {
 
     public String getSuitStr() {
         if (getSuit() == 0)
-            return "club";
+            return "clubs";
         if (getSuit() == 1)
             return "diamonds";
         if (getSuit() == 2)
             return "hearts";
         return "spades";
+    }
+
+    @Override
+    public String toString() {
+        return getRankStr() + " of " + getSuitStr();
     }
 }
