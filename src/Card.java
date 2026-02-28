@@ -1,6 +1,6 @@
 public class Card {
     private final int rank; // 2 to 14 (ace)
-    private final int suit; // 0: Club, 1: Diamonds, 2: Hearts, 3: Spades
+    private final int suit; // 0: Clubs, 1: Diamonds, 2: Hearts, 3: Spades
 
     public Card(int rank, int suit) {
         this.rank = rank;
@@ -20,7 +20,7 @@ public class Card {
                 case "jack" -> 11;
                 case "queen" -> 12;
                 case "king" -> 13;
-                case "ace"  -> 14;
+                case "ace" -> 14;
                 default -> throw new IllegalArgumentException();
             };
         }
@@ -51,5 +51,19 @@ public class Card {
             return "ace";
 
         return String.valueOf(getRank());
+    }
+
+    public int getSuit() {
+        return suit;
+    }
+
+    public String getSuitStr() {
+        if (getSuit() == 0)
+            return "club";
+        if (getSuit() == 1)
+            return "diamonds";
+        if (getSuit() == 2)
+            return "hearts";
+        return "spades";
     }
 }
