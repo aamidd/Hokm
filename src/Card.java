@@ -28,7 +28,7 @@ public class Card {
 
     public int parseSuit(String suit) {
         return switch (suit.toLowerCase()) {
-            case "club" -> 0;
+            case "clubs" -> 0;
             case "diamonds" -> 1;
             case "hearts" -> 2;
             case "spades" -> 3;
