@@ -16,11 +16,11 @@ public class Card {
         try {
             return Integer.parseInt(rank);
         } catch (NumberFormatException e) {
-            return switch (rank.toLowerCase()) {
-                case "jack" -> 11;
-                case "queen" -> 12;
-                case "king" -> 13;
-                case "ace" -> 14;
+            return switch (rank) {
+                case "J" -> 11;
+                case "Q" -> 12;
+                case "K" -> 13;
+                case "A" -> 14;
                 default -> throw new IllegalArgumentException();
             };
         }
@@ -42,13 +42,13 @@ public class Card {
 
     public String getRankStr() {
         if (getRank() == 11)
-            return "jack";
+            return "J";
         if (getRank() == 12)
-            return "queen";
+            return "Q";
         if (getRank() == 13)
-            return "king";
+            return "K";
         if (getRank() == 14)
-            return "ace";
+            return "A";
 
         return String.valueOf(getRank());
     }
@@ -59,16 +59,16 @@ public class Card {
 
     public String getSuitStr() {
         if (getSuit() == 0)
-            return "clubs";
+            return "♣";
         if (getSuit() == 1)
-            return "diamonds";
+            return "♦";
         if (getSuit() == 2)
-            return "hearts";
-        return "spades";
+            return "♥";
+        return "♠";
     }
 
     @Override
     public String toString() {
-        return getRankStr() + " of " + getSuitStr();
+        return getSuitStr() + getRankStr();
     }
 }
