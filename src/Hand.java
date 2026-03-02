@@ -22,18 +22,18 @@ public class Hand {
             str += String.format("%3d   ", i);
         }
         str += "\n";
-        for (int i = 0; i < 13; i++) {
-            String up = String.format("⌜%-3s⌝", cards.get(i).getRankStr());
+        for (Card card : cards) {
+            String up = String.format("⌜%-3s⌝", card.getRankStr());
             str += String.format("%-6s", up);
         }
         str += "\n";
-        for (int i = 0; i < 13; i++) {
-            String middle = String.format("  %s  ", cards.get(i).getSuitStr());
+        for (Card card : cards) {
+            String middle = String.format("  %s  ", card.getSuitStr());
             str += String.format("%-6s", middle);
         }
         str += "\n";
-        for (int i = 0; i < 13; i++) {
-            String lower = String.format("⌞%3s⌟", cards.get(i).getRankStr());
+        for (Card card : cards) {
+            String lower = String.format("⌞%3s⌟", card.getRankStr());
             str += String.format("%-6s", lower);
         }
         return str;
