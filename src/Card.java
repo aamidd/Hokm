@@ -69,6 +69,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return getSuitStr() + getRankStr();
+        return String.format("⌜%-3s⌝\n  %s\n⌞%3s⌟", getRankStr(), getSuitStr(), getRankStr());
     }
 }
