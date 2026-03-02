@@ -16,26 +16,26 @@ public class Hand {
     }
 
     public String toHorizontalString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         int cardsSize = cards.size();
         for (int i = 1; i <= cardsSize; i++) {
-            str += String.format("%3d   ", i);
+            str.append(String.format("%3d   ", i));
         }
-        str += "\n";
+        str.append("\n");
         for (Card card : cards) {
             String up = String.format("⌜%-3s⌝", card.getRankStr());
-            str += String.format("%-6s", up);
+            str.append(String.format("%-6s", up));
         }
-        str += "\n";
+        str.append("\n");
         for (Card card : cards) {
             String middle = String.format("  %s  ", card.getSuitStr());
-            str += String.format("%-6s", middle);
+            str.append(String.format("%-6s", middle));
         }
-        str += "\n";
+        str.append("\n");
         for (Card card : cards) {
             String lower = String.format("⌞%3s⌟", card.getRankStr());
-            str += String.format("%-6s", lower);
+            str.append(String.format("%-6s", lower));
         }
-        return str;
+        return str.toString();
     }
 }
