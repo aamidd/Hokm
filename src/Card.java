@@ -69,6 +69,9 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.format("⌜%-3s⌝\n  %s\n⌞%3s⌟", getRankStr(), getSuitStr(), getRankStr());
+        boolean isTen = getRank() == 10;
+        String top = isTen ? "¯" : "¯¯";
+        String bottom = isTen ? "_" : "__";
+        return String.format("|%s%s|\n│ %s │\n|%s%s|", getRankStr(), top, getSuitStr(), bottom, getRankStr());
     }
 }
