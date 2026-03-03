@@ -7,6 +7,10 @@ public class Hand {
         cards.add(card);
     }
 
+    public void addCards(ArrayList<Card> cards) {
+        this.cards.addAll(cards);
+    }
+
     public void useCard(Card card) {
         cards.remove(card);
     }
