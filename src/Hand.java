@@ -38,4 +38,33 @@ public class Hand {
         }
         return str.toString();
     }
+
+    public String toDiagonalString() {
+        StringBuilder str = new StringBuilder();
+        int size = cards.size();
+        for (int i = 0; i <= size; i++) {
+            for (int j = 0; j < i * 2; j++) {
+                if (j == i * 2 - 4) {
+                    str.append("|");
+                } else if (j == i * 2 - 3) {
+                    str.append("_");
+                } else if (j == i * 2 - 2) {
+                    str.append("│");
+                } else if (j == i * 2 - 1 && i != size) {
+                    str.append(cards.get(i - 1).getSuitStr());
+                } else {
+                    str.append(" ");
+                }
+            }
+            if (i == size) {
+                str.append(String.format("%s │\n", cards.get(i - 1).getSuitStr()));
+                str.append(" ".repeat(size * 2 - 2));
+                str.append(String.format("|%s%s|\n", cards.get(i - 1).getRank() == 10 ? "_" : "__", cards.get(i - 1).getRankStr()));
+                continue;
+            }
+            str.append(String.format("|%s%s|%5d", cards.get(i).getRankStr(), cards.get(i).getRank() == 10 ? "¯" : "¯¯", i + 1));
+            str.append("\n");
+        }
+        return str.toString();
+    }
 }
