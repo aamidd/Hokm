@@ -23,24 +23,23 @@ public class Hand {
 
     public String toHorizontalString() {
         StringBuilder str = new StringBuilder();
-        int cardsSize = cards.size();
-        for (int i = 1; i <= cardsSize; i++) {
+        for (int i = 1; i <= cards.size(); i++) {
             str.append(String.format("%3d   ", i));
         }
         str.append("\n");
         for (Card card : cards) {
-            String up = String.format("|%s%s|", card.getRankStr(), card.getRank() == 10 ? "¯" : "¯¯");
-            str.append(String.format("%-6s", up));
+            String top = card.toString().substring(0, 5);
+            str.append(String.format("%-6s", top));
         }
         str.append("\n");
         for (Card card : cards) {
-            String middle = String.format("│ %s │", card.getSuitStr());
+            String middle = card.toString().substring(6, 11);
             str.append(String.format("%-6s", middle));
         }
         str.append("\n");
         for (Card card : cards) {
-            String lower = String.format("|%s%s|", card.getRank() == 10 ? "_" : "__", card.getRankStr());
-            str.append(String.format("%-6s", lower));
+            String bottom = card.toString().substring(12, 17);
+            str.append(String.format("%-6s", bottom));
         }
         return str.toString();
     }
