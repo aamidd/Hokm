@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck {
-    ArrayList<Card> cards = new ArrayList<Card>();
+    private ArrayList<Card> cards = new ArrayList<Card>();
 
     public Deck() {
         initialize();
@@ -13,6 +14,17 @@ public class Deck {
                 Card card = new Card(i, j);
                 cards.add(card);
             }
+        }
+    }
+
+    public void shuffle() {
+        Random rand = new Random();
+
+        for (int i = 0; i < 52; i++) {
+            int randInt = rand.nextInt(cards.size());
+            Card tmp = cards.get(randInt);
+            cards.set(randInt, cards.get(i));
+            cards.set(i, tmp);
         }
     }
 }
