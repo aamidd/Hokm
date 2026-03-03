@@ -23,17 +23,17 @@ public class Hand {
         }
         str.append("\n");
         for (Card card : cards) {
-            String up = String.format("⌜%-3s⌝", card.getRankStr());
+            String up = String.format("⌜%s%s⌝", card.getRankStr(), card.getRank() == 10 ? "¯" : "¯¯");
             str.append(String.format("%-6s", up));
         }
         str.append("\n");
         for (Card card : cards) {
-            String middle = String.format("  %s  ", card.getSuitStr());
+            String middle = String.format("│ %s │", card.getSuitStr());
             str.append(String.format("%-6s", middle));
         }
         str.append("\n");
         for (Card card : cards) {
-            String lower = String.format("⌞%3s⌟", card.getRankStr());
+            String lower = String.format("⌞%s%s⌟", card.getRank() == 10 ? "_" : "__", card.getRankStr());
             str.append(String.format("%-6s", lower));
         }
         return str.toString();
