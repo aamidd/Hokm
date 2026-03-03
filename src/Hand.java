@@ -8,7 +8,9 @@ public class Hand {
     }
 
     public void addCards(ArrayList<Card> cards) {
-        this.cards.addAll(cards);
+        for (Card card : cards) {
+            addCard(card);
+        }
     }
 
     public void useCard(Card card) {
