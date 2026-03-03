@@ -27,4 +27,17 @@ public class Deck {
             cards.set(i, tmp);
         }
     }
+
+    public Card deal() {
+        return cards.removeLast();
+    }
+
+    public ArrayList<Card> deal(int amount) {
+        ArrayList<Card> dealtCards = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            dealtCards.add(deal());
+        }
+
+        return dealtCards;
+    }
 }
