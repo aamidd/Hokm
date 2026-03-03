@@ -21,13 +21,12 @@ public class Hand {
         for (int i = 0; i <= size; i++) {
             for (int j = 0; j < i * 2; j++) {
                 if (j == i * 2 - 4) {
-                    str.append("|");
-                } else if (j == i * 2 - 3) {
-                    str.append("_");
+                    str.append("|_");
+                    j++;
                 } else if (j == i * 2 - 2) {
                     str.append("│");
-                } else if (j == i * 2 - 1 && i != size) {
-                    str.append(cards.get(i - 1).getSuitStr());
+                    str.append(i == size ? " " : cards.get(i - 1).getSuitStr());
+                    j++;
                 } else {
                     str.append(" ");
                 }
