@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Hand {
     private final ArrayList<Card> cards = new ArrayList<>();
+    private boolean isCompact;
 
     public void addCard(Card card) {
         cards.add(card);
@@ -70,5 +71,13 @@ public class Hand {
             str.append("\n");
         }
         return str.toString();
+    }
+
+    public boolean isCompact() {
+        return isCompact;
+    }
+
+    public void setCompact(boolean compact) {
+        isCompact = compact;
     }
 }
