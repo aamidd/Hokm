@@ -40,4 +40,12 @@ public class Deck {
 
         return dealtCards;
     }
+
+    public Card peek() {
+        return cards.getLast();
+    }
+
+    public Card peek(int nthIndex) {
+        return cards.get(nthIndex);
+    }
 }
