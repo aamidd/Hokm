@@ -80,4 +80,9 @@ public class Hand {
     public void setCompact(boolean compact) {
         isCompact = compact;
     }
+
+    @Override
+    public String toString() {
+        return isCompact ? toDiagonalString() : toHorizontalString();
+    }
 }
