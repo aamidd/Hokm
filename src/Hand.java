@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Hand {
     private final ArrayList<Card> cards = new ArrayList<>();
-    private boolean isCompact;
+    private int compactness = 0;
 
     public void addCard(Card card) {
         cards.add(card);
@@ -45,7 +45,7 @@ public class Hand {
         return str.toString();
     }
 
-    public String toDiagonalString() {
+    public String toSuperCompactString() {
         StringBuilder str = new StringBuilder();
         int size = cards.size();
         for (int i = 0; i <= size; i++) {
@@ -73,16 +73,61 @@ public class Hand {
         return str.toString();
     }
 
-    public boolean isCompact() {
-        return isCompact;
+    public String toCompactString() {
+        StringBuilder str = new StringBuilder();
+        int size = cards.size();
+
+        for (int i = 1; i <= size; i++) {
+            str.append(String.format(" %-2d", i));
+        }
+        str.append("\n");
+        for (int i = 0; i < size; i++) {
+            Card card = cards.get(i);
+            if (i == size - 1) {
+                str.append(card.toString(), 0, 5);
+            } else {
+                str.append(card.toString(), 0, 3);
+            }
+        }
+        str.append("\n");
+        for (int i = 0; i < size; i++) {
+            Card card = cards.get(i);
+            if (i == size - 1) {
+                str.append(card.toString(), 6, 11);
+            } else {
+                str.append(card.toString(), 6, 9);
+            }
+        }
+
+        str.append("\n");
+        for (int i = 0; i < size; i++) {
+            Card card = cards.get(i);
+            if (i == size - 1) {
+                str.append(card.toString(), 12, 17);
+            } else {
+                str.append("|__");
+            }
+        }
+
+        return str.toString();
     }
 
-    public void setCompact(boolean compact) {
-        isCompact = compact;
+    public int getCompactness() {
+        return compactness;
+    }
+
+    public void setCompactness(int compactness) {
+        this.compactness = compactness;
     }
 
     @Override
     public String toString() {
-        return isCompact ? toDiagonalString() : toHorizontalString();
+        if (compactness == 0) {
+            return toHorizontalString();
+        }
+        if (compactness == 1) {
+            return toCompactString();
+        }
+        return toSuperCompactString();
     }
 }
