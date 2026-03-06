@@ -8,22 +8,28 @@ public class Game {
     }
 
     public void chooseTeams(Deck deck) {
+        ArrayList<User> tmpArr = new ArrayList<>(users); // this is here to easily choose the second team
         int firstAce = 51 - deck.find("A");
         int secondAce = 51 - deck.find("A", 2);
 
-        int firstUserIndex = firstAce % 4;
+        int hakem = firstAce % 4;
         // the second user has to be chosen from the remaining three users
-        int secondUserIndex = (secondAce - firstAce - 1) % 3;
-        secondUserIndex = (firstUserIndex + secondUserIndex + 1) % 4;
+        int teammate = (secondAce - firstAce - 1) % 3; // hakem's teammate
+        teammate = (hakem + teammate + 1) % 4;
 
-        if (!(firstUserIndex == 0 && secondUserIndex == 2)) {
-            User tmp = users.get(firstUserIndex);
-            users.set(firstUserIndex, users.getFirst());
-            users.set(0, tmp);
+        if (!(hakem == 0 && teammate == 2)) {
+            User[] teams = new User[4];
+            teams[0] = users.get(hakem);
+            tmpArr.remove(teams[0]);
+            teams[2] = users.get(teammate);
+            tmpArr.remove(teams[2]);
 
-            User tmp2 = users.get(secondUserIndex);
-            users.set(secondUserIndex, users.get(2));
-            users.set(2, tmp2);
+            teams[1] = tmpArr.getFirst();
+            teams[3] = tmpArr.getLast();
+
+            for (int i = 0; i < 4; i++) {
+                users.set(i, teams[i]);
+            }
         }
     }
 }
