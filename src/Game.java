@@ -36,6 +36,13 @@ public class Game {
         }
     }
 
+    public void chooseTeams(User team1, User teammate1, User team2, User teammate2) {
+        users.set(0, team1);
+        users.set(2, teammate1);
+        users.set(1, team2);
+        users.set(3, teammate2);
+    }
+
     public User getUser(int index) {
         return users.get(index);
     }
