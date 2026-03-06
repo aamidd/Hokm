@@ -48,4 +48,28 @@ public class Deck {
     public Card peek(int nthIndex) {
         return cards.get(nthIndex);
     }
+
+    public int find(String rank) {
+        for (int i = 51; i >= 0; i--) {
+            if (rank.equals(cards.get(i).getRankStr())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int find(String rank, int nth) {
+        if (nth > 4 || nth < 1) {
+            return -1;
+        }
+        int count = 0;
+        for (int i = 51; i >= 0; i--) {
+            if (rank.equals(cards.get(i).getRankStr())) {
+                if (++count == nth) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 }
