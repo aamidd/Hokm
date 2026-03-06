@@ -13,7 +13,7 @@ public class Game {
 
         int firstUserIndex = firstAce % 4;
         // the second user has to be chosen from the remaining three users
-        int secondUserIndex = secondAce % 3;
+        int secondUserIndex = (secondAce - firstAce - 1) % 3;
         secondUserIndex = (firstUserIndex + secondUserIndex + 1) % 4;
 
         if (!(firstUserIndex == 0 && secondUserIndex == 2)) {
