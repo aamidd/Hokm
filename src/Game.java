@@ -4,6 +4,9 @@ public class Game {
     ArrayList<User> users = new ArrayList<>();
 
     public void addUser(User user) {
+        if (users.size() == 4) {
+            throw new UnsupportedOperationException("4 users already added");
+        }
         users.add(user);
     }
 
