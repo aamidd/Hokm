@@ -51,7 +51,7 @@ public class Deck {
 
     public int find(String rank) {
         for (int i = 51; i >= 0; i--) {
-            if (rank.equals(cards.get(i).getRankStr())) {
+            if (rank.equals(peek(i).getRankStr())) {
                 return i;
             }
         }
@@ -64,7 +64,7 @@ public class Deck {
         }
         int count = 0;
         for (int i = 51; i >= 0; i--) {
-            if (rank.equals(cards.get(i).getRankStr())) {
+            if (rank.equals(peek(i).getRankStr())) {
                 if (++count == nth) {
                     return i;
                 }
