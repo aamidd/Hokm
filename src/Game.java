@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<User> users = new ArrayList<>();
+    private int hokm; // 0: Clubs, 1: Diamonds, 2: Hearts, 3: Spades
 
     public void addUser(User user) {
         if (users.size() == 4) {
@@ -49,5 +50,17 @@ public class Game {
 
     public ArrayList<User> getUsers() {
         return users;
+    }
+
+    public void setHokm(int hokm) {
+        this.hokm = hokm;
+    }
+
+    public int getHokm() {
+        return hokm;
+    }
+
+    public String getHokmStr() {
+        return Card.getSuitStr(getHokm());
     }
 }
