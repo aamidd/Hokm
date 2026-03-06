@@ -15,7 +15,7 @@ public class Game {
         int hakem = firstAce % 4;
         // the second user has to be chosen from the remaining three users
         int teammate = (secondAce - firstAce - 1) % 3; // hakem's teammate
-        teammate = (hakem + teammate + 1) % 4;
+        teammate = (hakem + teammate + 1) % 4; // start from after the hakem
 
         if (!(hakem == 0 && teammate == 2)) {
             User[] teams = new User[4];
