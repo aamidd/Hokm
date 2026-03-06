@@ -12,7 +12,7 @@ public class Card {
         this.suit = parseSuit(suitStr);
     }
 
-    public int parseRank(String rank) {
+    public static int parseRank(String rank) {
         try {
             return Integer.parseInt(rank);
         } catch (NumberFormatException e) {
@@ -26,7 +26,7 @@ public class Card {
         }
     }
 
-    public int parseSuit(String suit) {
+    public static int parseSuit(String suit) {
         return switch (suit.toLowerCase()) {
             case "clubs" -> 0;
             case "diamonds" -> 1;
@@ -40,31 +40,39 @@ public class Card {
         return rank;
     }
 
-    public String getRankStr() {
-        if (getRank() == 11)
+    public static String getRankStr(int rank) {
+        if (rank == 11)
             return "J";
-        if (getRank() == 12)
+        if (rank == 12)
             return "Q";
-        if (getRank() == 13)
+        if (rank == 13)
             return "K";
-        if (getRank() == 14)
+        if (rank == 14)
             return "A";
 
-        return String.valueOf(getRank());
+        return String.valueOf(rank);
+    }
+
+    public String getRankStr() {
+        return getRankStr(rank);
     }
 
     public int getSuit() {
         return suit;
     }
 
-    public String getSuitStr() {
-        if (getSuit() == 0)
+    public static String getSuitStr(int suit) {
+        if (suit == 0)
             return "♣";
-        if (getSuit() == 1)
+        if (suit == 1)
             return "♦";
-        if (getSuit() == 2)
+        if (suit == 2)
             return "♥";
         return "♠";
+    }
+
+    public String getSuitStr() {
+        return getSuitStr(getSuit());
     }
 
     @Override
@@ -72,6 +80,6 @@ public class Card {
         boolean isTen = getRank() == 10;
         String top = isTen ? "¯" : "¯¯";
         String bottom = isTen ? "_" : "__";
-        return String.format("|%s%s|\n│ %s │\n|%s%s|", getRankStr(), top, getSuitStr(), bottom, getRankStr());
+        return String.format("|%s%s|\n│ %s │\n|%s%s|", getRankStr(getRank()), top, getSuitStr(getSuit()), bottom, getRankStr(getRank()));
     }
 }
