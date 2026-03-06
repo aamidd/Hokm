@@ -12,14 +12,20 @@ public class Game {
         int secondAce = 51 - deck.find("A", 2);
 
         int firstUserIndex = firstAce % 4;
-        int secondUserIndex = secondAce % 4;
+        // the second user has to be chosen from the remaining three users
+        int secondUserIndex = secondAce % 3;
+        if (secondUserIndex >= firstUserIndex) {
+            secondUserIndex++;
+        }
+        
+        if (!(firstUserIndex == 0 && secondUserIndex == 2)) {
+            User tmp = users.get(firstUserIndex);
+            users.set(firstUserIndex, users.getFirst());
+            users.set(0, tmp);
 
-        User tmp = users.get(firstUserIndex);
-        User tmp2 = users.get(secondUserIndex);
-
-        users.set(firstUserIndex, users.getFirst());
-        users.set(0, tmp);
-        users.set(secondUserIndex, users.get(2));
-        users.set(2, tmp2);
+            User tmp2 = users.get(secondUserIndex);
+            users.set(secondUserIndex, users.get(2));
+            users.set(2, tmp2);
+        }
     }
 }
