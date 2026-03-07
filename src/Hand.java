@@ -120,6 +120,29 @@ public class Hand {
         this.compactness = compactness;
     }
 
+    public void sortHand() {
+        for (int i = 0; i < cards.size() - 1; i++) {
+            for (int j = 0; j < cards.size() - 1 - i; j++) {
+                int rank1 = cards.get(j).getRank();
+                int suit1 = cards.get(j).getSuit();
+                int rank2 = cards.get(j + 1).getRank();
+                int suit2 = cards.get(j + 1).getSuit();
+                boolean swap = false;
+                if (suit1 < suit2) {
+                    swap = true;
+                } else if (suit1 == suit2 && rank1 < rank2) {
+                    swap = true;
+                }
+
+                if (swap) {
+                    Card tmp = cards.get(j);
+                    cards.set(j, cards.get(j + 1));
+                    cards.set(j + 1, tmp);
+                }
+            }
+        }
+    }
+
     @Override
     public String toString() {
         if (compactness == 0) {
