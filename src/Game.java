@@ -76,10 +76,6 @@ public class Game {
             hand.addCards(deck.deal(5));
             hands.add(hand);
         }
-
-        for (Hand hand : hands) {
-            System.out.println(hand);
-        }
     }
 
     // deal the rest of the hand in the same style as IRL Hokm
@@ -96,10 +92,6 @@ public class Game {
             for (Hand hand : hands) {
                 hand.addCards(deck.deal(4));
             }
-        }
-
-        for (Hand hand : hands) {
-            System.out.println(hand);
         }
     }
 }
