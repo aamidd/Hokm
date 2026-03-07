@@ -17,7 +17,7 @@ public class Game {
         users.add(user);
     }
 
-    public void chooseTeams(Deck deck) {
+    public void chooseTeams() {
         ArrayList<User> tmpArr = new ArrayList<>(users); // this is here to easily choose the second team
         int firstAce = 51 - deck.find("A");
         int secondAce = 51 - deck.find("A", 2);
@@ -41,6 +41,8 @@ public class Game {
                 users.set(i, teams[i]);
             }
         }
+
+        deck.shuffle();
     }
 
     public void chooseTeams(User team1, User teammate1, User team2, User teammate2) {
