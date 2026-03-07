@@ -69,6 +69,9 @@ public class HokmCLI {
         if (team.charAt(1) != ' ') {
             return false;
         }
-        return Character.isDigit(team.charAt(0)) && Character.isDigit(team.charAt(2));
+        if (!Character.isDigit(team.charAt(0)) || !Character.isDigit(team.charAt(2))) {
+            return false;
+        }
+        return Character.getNumericValue(team.charAt(0)) <= 4 && Character.getNumericValue(team.charAt(2)) <= 4;
     }
 }
