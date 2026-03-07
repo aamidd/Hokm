@@ -63,4 +63,37 @@ public class Game {
     public String getHokmStr() {
         return Card.getSuitStr(getHokm());
     }
+
+    public void dealFive() {
+        for (int i = 0; i < 4; i++) {
+            Hand hand = new Hand();
+            hand.addCards(deck.deal(5));
+            hands.add(hand);
+        }
+
+        for (Hand hand : hands) {
+            System.out.println(hand);
+        }
+    }
+
+    // deal the rest of the hand in the same style as IRL Hokm
+    public void dealRest() {
+        if (hands.isEmpty()) {
+            throw new UnsupportedOperationException("Haven't dealt the first 5");
+        }
+
+        if (hokm == -1) {
+            throw new UnsupportedOperationException("Haven't chosen the hokm");
+        }
+
+        for (int i = 0; i < 2; i++) {
+            for (Hand hand : hands) {
+                hand.addCards(deck.deal(4));
+            }
+        }
+
+        for (Hand hand : hands) {
+            System.out.println(hand);
+        }
+    }
 }
