@@ -102,4 +102,8 @@ public class Game {
             hand.sortHand(hokm);
         }
     }
+
+    public ArrayList<Hand> getHands() {
+        return hands;
+    }
 }
