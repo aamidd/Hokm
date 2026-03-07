@@ -10,7 +10,7 @@ public class User {
 
     public User(String username) {
         id = numberOfUsers++;
-        this.username = username;
+        this.username = username.isEmpty() ? "Player" + numberOfUsers : username;
     }
 
     public int getId() {
