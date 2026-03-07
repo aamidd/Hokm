@@ -74,7 +74,7 @@ public class Game {
         for (int i = 0; i < 4; i++) {
             Hand hand = new Hand();
             hand.addCards(deck.deal(5));
-            hand.sortHand();
+            hand.sortHand(hokm);
             hands.add(hand);
         }
     }
@@ -96,8 +96,7 @@ public class Game {
         }
 
         for (Hand hand : hands) {
-            hand.setHokm(getHokm());
-            hand.sortHand();
+            hand.sortHand(hokm);
         }
     }
 }
