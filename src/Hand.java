@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Hand {
     private final ArrayList<Card> cards = new ArrayList<>();
     private int compactness = 0;
+    private int hokm = -1;
 
     public void addCard(Card card) {
         cards.add(card);
@@ -127,10 +128,16 @@ public class Hand {
                 int suit1 = cards.get(j).getSuit();
                 int rank2 = cards.get(j + 1).getRank();
                 int suit2 = cards.get(j + 1).getSuit();
+
+                if (getHokm() != -1) {
+                    suit1 = (suit1 + (4 - getHokm())) % 4;
+                    suit2 = (suit2 + (4 - getHokm())) % 4;
+                }
+
                 boolean swap = false;
                 if (suit1 < suit2) {
                     swap = true;
-                } else if (suit1 == suit2 && rank1 < rank2) {
+                } else if (suit1 == suit2 && rank1 > rank2) {
                     swap = true;
                 }
 
@@ -141,6 +148,14 @@ public class Hand {
                 }
             }
         }
+    }
+
+    public int getHokm() {
+        return hokm;
+    }
+
+    public void setHokm(int hokm) {
+        this.hokm = hokm;
     }
 
     @Override
