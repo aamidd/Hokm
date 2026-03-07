@@ -134,9 +134,9 @@ public class Hand {
                 }
 
                 boolean swap = false;
-                if (suit1 < suit2) {
+                if (suit1 > suit2) {
                     swap = true;
-                } else if (suit1 == suit2 && rank1 > rank2) {
+                } else if (suit1 == suit2 && rank1 < rank2) {
                     swap = true;
                 }
 
