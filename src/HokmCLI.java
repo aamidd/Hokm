@@ -43,19 +43,29 @@ public class HokmCLI {
         System.out.println("2 3");
         System.out.println();
         for (int i = 0; i < 4; i++) {
-            System.out.printf("%d: %s\n", i + 1, game.getUsers().get(i));
+            System.out.printf("%d: %s\n", i + 1, game.getUsers().get(i).getUsername());
         }
         while (true) {
             String team1String = getInput("Team 1: ");
             String team2String = getInput("Team 2: ");
             if (!validateTeam(team1String) || !validateTeam(team2String)) {
-                System.out.println("You should choose the number of the players in this form:\nnum num");
+                System.out.println("You should choose the number of the players in this form (num is from 1-4):\nnum num");
                 continue;
             }
-            User user1 = game.getUser(Character.getNumericValue(team1String.charAt(0)));
-            User user2 = game.getUser(Character.getNumericValue(team1String.charAt(2)));
-            User user3 = game.getUser(Character.getNumericValue(team2String.charAt(0)));
-            User user4 = game.getUser(Character.getNumericValue(team2String.charAt(2)));
+            int index1 = Character.getNumericValue(team1String.charAt(0)) - 1;
+            int index2 = Character.getNumericValue(team1String.charAt(2)) - 1;
+            int index3 = Character.getNumericValue(team2String.charAt(0)) - 1;
+            int index4 = Character.getNumericValue(team2String.charAt(2)) - 1;
+
+            if ((index1 ^ index2 ^ index3 ^ index4) != (0 ^ 1 ^ 2 ^ 3)) {
+                System.out.println("Do not choose the same number more than once");
+                continue;
+            }
+
+            User user1 = game.getUser(index1);
+            User user2 = game.getUser(index2);
+            User user3 = game.getUser(index3);
+            User user4 = game.getUser(index4);
             game.chooseTeams(user1, user2, user3, user4);
             break;
         }
