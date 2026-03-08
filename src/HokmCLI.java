@@ -22,7 +22,7 @@ public class HokmCLI {
                     game.chooseTeams();
                     break prompt;
                 case "2":
-                    chooseTeams();
+                    chooseTeamsManually();
                     break prompt;
                 default:
                     System.out.println("Choose between 1 and 2");
@@ -36,7 +36,7 @@ public class HokmCLI {
         return input.nextLine();
     }
 
-    public void chooseTeams() {
+    public void chooseTeamsManually() {
         System.out.println("(Separate teammates' numbers by space)");
         System.out.println("Example:");
         System.out.println("1 4");
@@ -69,7 +69,6 @@ public class HokmCLI {
             game.chooseTeams(user1, user2, user3, user4);
             break;
         }
-
     }
 
     public boolean validateTeam(String team) {
