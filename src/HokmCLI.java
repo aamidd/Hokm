@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class HokmCLI {
@@ -19,7 +21,7 @@ public class HokmCLI {
             String option = getInput("> ");
             switch (option) {
                 case "1":
-                    game.chooseTeams();
+                    chooseTeamsWithCards();
                     break prompt;
                 case "2":
                     chooseTeamsManually();
@@ -69,6 +71,35 @@ public class HokmCLI {
             game.chooseTeams(user1, user2, user3, user4);
             break;
         }
+    }
+
+    public void chooseTeamsWithCards() {
+        Deck deck = game.getDeck();
+        int index = 51;
+        int userIndex = 0;
+        int hakemIndex = -1;
+        while (true) {
+            if (userIndex == hakemIndex) {
+                userIndex = (userIndex + 1) % 4;
+                continue;
+            }
+            System.out.printf("%s:\n%s\n", game.getUser(userIndex).getUsername(), deck.peek(index));
+            if (deck.peek(index).getRank() == 14) {
+                if (hakemIndex != -1)
+                    break;
+                hakemIndex = userIndex;
+            }
+            index--;
+            userIndex = (userIndex + 1) % 4;
+            getInput("(hit enter to reveal next card)");
+        }
+        game.chooseTeams();
+        int leftUserLength = game.getUser(1).getUsername().length();
+        int maxMiddleLength = Math.max(game.getUser(0).getUsername().length(), game.getUser(2).getUsername().length());
+
+        System.out.println(" ".repeat(leftUserLength + 5) + " ".repeat((maxMiddleLength - game.getUser(0).getUsername().length()) / 2) + game.getUser(0).getUsername() + " ".repeat((maxMiddleLength - game.getUser(0).getUsername().length()) / 2));
+        System.out.println(game.getUser(1).getUsername() + " ".repeat(5 + maxMiddleLength + 5) + game.getUsers().get(3).getUsername());
+        System.out.println(" ".repeat(leftUserLength + 5) + " ".repeat((maxMiddleLength - game.getUser(2).getUsername().length()) / 2) + game.getUser(2).getUsername() + " ".repeat((maxMiddleLength - game.getUser(2).getUsername().length()) / 2));
     }
 
     public boolean validateTeam(String team) {
