@@ -108,4 +108,8 @@ public class Hokm {
     public ArrayList<Hand> getHands() {
         return hands;
     }
+
+    public Deck getDeck() {
+        return deck;
+    }
 }
