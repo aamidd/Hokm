@@ -48,7 +48,7 @@ public class HokmCLI {
         while (true) {
             String team1String = getInput("Team 1: ");
             String team2String = getInput("Team 2: ");
-            if (!validateTeam(team1String) || !validateTeam(team2String)) {
+            if (!validateTeamString(team1String) || !validateTeamString(team2String)) {
                 System.out.println("You should choose the number of the players in this form (num is from 1-4):\nnum num");
                 continue;
             }
