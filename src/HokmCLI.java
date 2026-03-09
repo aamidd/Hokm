@@ -100,7 +100,7 @@ public class HokmCLI {
         System.out.println(" ".repeat(leftUserLength + 5) + " ".repeat((maxMiddleLength - game.getUser(2).getUsername().length()) / 2) + game.getUser(2).getUsername() + " ".repeat((maxMiddleLength - game.getUser(2).getUsername().length()) / 2));
     }
 
-    public boolean validateTeam(String team) {
+    public boolean validateTeamString(String team) {
         if (team.length() != 3) {
             return false;
         }
