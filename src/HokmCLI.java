@@ -12,6 +12,7 @@ public class HokmCLI {
             game.addUser(user);
         }
 
+        System.out.println("\nHow to choose teams:");
         System.out.println("1. Deal cards to choose teams");
         System.out.println("2. Choose your own teams");
         prompt:
