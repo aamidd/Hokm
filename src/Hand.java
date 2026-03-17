@@ -14,12 +14,33 @@ public class Hand {
         }
     }
 
+    public Card getCard(int index) {
+        return cards.get(index);
+    }
+
     public void useCard(Card card) {
         cards.remove(card);
     }
 
     public void useCard(int cardNumber) {
         useCard(cards.get(cardNumber - 1));
+    }
+
+    public int playCard(int cardNumber, int tableSuit) { // by table, I mean zamine
+        if (hasSuit(tableSuit) && getCard(cardNumber).getSuit() != tableSuit) {
+            return 1;
+        }
+        useCard(cardNumber);
+        return 0;
+    }
+
+    public boolean hasSuit(int suit) {
+        for (Card card : cards) {
+            if (card.getSuit() == suit) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String toHorizontalString() {
