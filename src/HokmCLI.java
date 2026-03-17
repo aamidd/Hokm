@@ -29,6 +29,24 @@ public class HokmCLI {
                     System.out.println("Choose between 1 and 2");
             }
         }
+
+        game.dealFive();
+        System.out.println(game.getHands().getFirst());
+        System.out.println("You're the hakem. choose your hokm.");
+        System.out.println("1: ♣  2: ♦  3: ♥  4: ♠");
+        while (true) {
+            String hokmStr = getInput("> ");
+            if (hokmStr.length() == 1) {
+                if (Character.isDigit(hokmStr.charAt(0))) {
+                    int hokm = Integer.parseInt(hokmStr);
+                    if (hokm <= 4 && hokm >= 1) {
+                        game.setHokm(hokm - 1);
+                        break;
+                    }
+                }
+            }
+            System.out.println("Hokm should be a number between 1 and 4");
+        }
     }
 
     public String getInput(String prompt) {
