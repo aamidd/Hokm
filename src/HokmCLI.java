@@ -31,6 +31,8 @@ public class HokmCLI {
             }
         }
 
+        clearTerminal();
+
         game.dealFive();
         System.out.println(game.getHands().getFirst());
         System.out.println("You're the hakem. choose your hokm.");
@@ -139,5 +141,17 @@ public class HokmCLI {
             return false;
         }
         return Character.getNumericValue(team.charAt(0)) <= 4 && Character.getNumericValue(team.charAt(2)) <= 4;
+    }
+
+    public void clearTerminal() {
+        String term = System.getenv("TERM");
+        if (term != null && !term.isEmpty()) {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        } else {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
+        }
     }
 }
