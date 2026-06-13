@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class HokmCLI {
     private final Hokm game = new Hokm();
@@ -96,6 +97,7 @@ public class HokmCLI {
         int userIndex = 0;
         int hakemIndex = -1;
         while (true) {
+            int wait = 600; // how many milliseconds to wait after each dealing
             if (userIndex == hakemIndex) {
                 userIndex = (userIndex + 1) % 4;
                 continue;
@@ -105,10 +107,17 @@ public class HokmCLI {
                 if (hakemIndex != -1)
                     break;
                 hakemIndex = userIndex;
+                System.out.println(game.getUser(hakemIndex).getUsername() + " is the Hakem!");
+                wait = 2000;
             }
             index--;
+            // wait for users to see
+            try {
+                TimeUnit.MILLISECONDS.sleep(wait);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             userIndex = (userIndex + 1) % 4;
-            getInput("(hit enter to reveal next card)");
         }
         game.chooseTeams();
         int leftUserLength = game.getUser(1).getUsername().length();
