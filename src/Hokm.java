@@ -94,6 +94,7 @@ public class Hokm {
             throw new UnsupportedOperationException("Haven't chosen the hokm");
         }
 
+        // deal two sets of 4 cards to each player
         for (int i = 0; i < 2; i++) {
             for (Hand hand : hands) {
                 hand.addCards(deck.deal(4));
