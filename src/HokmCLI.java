@@ -31,10 +31,10 @@ public class HokmCLI {
             }
         }
 
-        getInput("(hit enter to continue)");
-        clearTerminal();
-
         game.dealFive();
+        turn(game.getUser(0).getUsername());
+        clearTerminal();
+        System.out.println(game.getUser(0).getUsername());
         System.out.println(game.getHands().getFirst());
         System.out.println("You're the hakem. choose your hokm.");
         System.out.println("1: ♣  2: ♦  3: ♥  4: ♠");
