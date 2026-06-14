@@ -53,6 +53,10 @@ public class HokmCLI {
         }
     }
 
+    public void turn(String username) {
+        getInput(String.format("(%s's turn. hit enter to reveal cards)", username));
+    }
+
     public String getInput(String prompt) {
         Scanner input = new Scanner(System.in);
         System.out.print(prompt);
