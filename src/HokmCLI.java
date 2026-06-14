@@ -99,7 +99,7 @@ public class HokmCLI {
         int userIndex = 0;
         int hakemIndex = -1;
         while (true) {
-            int wait = 600; // how many milliseconds to wait after each dealing
+            int wait = 400; // how many milliseconds to wait after each dealing
             if (userIndex == hakemIndex) {
                 userIndex = (userIndex + 1) % 4;
                 continue;
