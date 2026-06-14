@@ -30,7 +30,10 @@ public class HokmCLI {
                     System.out.println("Choose between 1 and 2");
             }
         }
+        gameLoop();
+    }
 
+    private void gameLoop() {
         showPlayersSitting();
 
         game.dealFive();
