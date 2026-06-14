@@ -133,12 +133,21 @@ public class HokmCLI {
     }
 
     private void showPlayersSitting() {
-        int leftUserLength = game.getUser(1).getUsername().length();
-        int maxMiddleLength = Math.max(game.getUser(0).getUsername().length(), game.getUser(2).getUsername().length());
+        String topName = game.getUser(0).getUsername();
+        String leftName = game.getUser(1).getUsername();
+        String bottomName = game.getUser(2).getUsername();
+        String rightName = game.getUser(3).getUsername();
 
-        System.out.println(" ".repeat(leftUserLength + 5) + " ".repeat((maxMiddleLength - game.getUser(0).getUsername().length()) / 2) + game.getUser(0).getUsername() + " ".repeat((maxMiddleLength - game.getUser(0).getUsername().length()) / 2));
-        System.out.println(game.getUser(1).getUsername() + " ".repeat(5 + maxMiddleLength + 5) + game.getUsers().get(3).getUsername());
-        System.out.println(" ".repeat(leftUserLength + 5) + " ".repeat((maxMiddleLength - game.getUser(2).getUsername().length()) / 2) + game.getUser(2).getUsername() + " ".repeat((maxMiddleLength - game.getUser(2).getUsername().length()) / 2));
+        int leftUserLength = leftName.length();
+        int maxMiddleLength = Math.max(topName.length(), bottomName.length());
+
+        String indent = " ".repeat(leftUserLength + 5);
+        String topPadding = " ".repeat((maxMiddleLength - topName.length()) / 2);
+        String bottomPadding = " ".repeat((maxMiddleLength - bottomName.length()) / 2);
+
+        System.out.println(indent + topPadding + topName);
+        System.out.println(leftName + " ".repeat(5 + maxMiddleLength + 5) + rightName);
+        System.out.println(indent + bottomPadding + bottomName);
     }
 
     public boolean validateTeamString(String team) {
