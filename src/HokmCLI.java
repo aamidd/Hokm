@@ -55,18 +55,18 @@ public class HokmCLI {
     }
 
     // inform the user's turn and clear the screen
-    public void turn(String username) {
+    private void turn(String username) {
         getInput(String.format("(%s's turn. hit enter to reveal cards)", username));
         clearTerminal();
     }
 
-    public String getInput(String prompt) {
+    private String getInput(String prompt) {
         Scanner input = new Scanner(System.in);
         System.out.print(prompt);
         return input.nextLine();
     }
 
-    public void chooseTeamsManually() {
+    private void chooseTeamsManually() {
         System.out.println("(Separate teammates' numbers by space)");
         System.out.println("Example:");
         System.out.println("1 4");
@@ -101,7 +101,7 @@ public class HokmCLI {
         }
     }
 
-    public void chooseTeamsWithCards() {
+    private void chooseTeamsWithCards() {
         Deck deck = game.getDeck();
         int index = 51;
         int userIndex = 0;
@@ -150,7 +150,7 @@ public class HokmCLI {
         System.out.println(indent + bottomPadding + bottomName);
     }
 
-    public boolean validateTeamString(String team) {
+    private boolean validateTeamString(String team) {
         if (team.length() != 3) {
             return false;
         }
@@ -163,7 +163,7 @@ public class HokmCLI {
         return Character.getNumericValue(team.charAt(0)) <= 4 && Character.getNumericValue(team.charAt(2)) <= 4;
     }
 
-    public void clearTerminal() {
+    private void clearTerminal() {
         String term = System.getenv("TERM");
         if (term != null && !term.isEmpty()) {
             System.out.print("\033[H\033[2J");
