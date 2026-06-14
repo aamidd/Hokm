@@ -31,6 +31,8 @@ public class HokmCLI {
             }
         }
 
+        showPlayersSitting();
+
         game.dealFive();
         turn(game.getUser(0).getUsername());
         System.out.println(game.getUser(0).getUsername());
@@ -128,6 +130,9 @@ public class HokmCLI {
             userIndex = (userIndex + 1) % 4;
         }
         game.chooseTeams();
+    }
+
+    private void showPlayersSitting() {
         int leftUserLength = game.getUser(1).getUsername().length();
         int maxMiddleLength = Math.max(game.getUser(0).getUsername().length(), game.getUser(2).getUsername().length());
 
