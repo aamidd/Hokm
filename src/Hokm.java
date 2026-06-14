@@ -56,6 +56,10 @@ public class Hokm {
         return users.get(index);
     }
 
+    public User getHakem() {
+        return getUser(0);
+    }
+
     public ArrayList<User> getUsers() {
         return users;
     }
