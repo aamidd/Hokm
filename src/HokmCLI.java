@@ -33,7 +33,6 @@ public class HokmCLI {
 
         game.dealFive();
         turn(game.getUser(0).getUsername());
-        clearTerminal();
         System.out.println(game.getUser(0).getUsername());
         System.out.println(game.getHands().getFirst());
         System.out.println("You're the hakem. choose your hokm.");
@@ -53,8 +52,10 @@ public class HokmCLI {
         }
     }
 
+    // inform the user's turn and clear the screen
     public void turn(String username) {
         getInput(String.format("(%s's turn. hit enter to reveal cards)", username));
+        clearTerminal();
     }
 
     public String getInput(String prompt) {
