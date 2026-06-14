@@ -31,6 +31,7 @@ public class HokmCLI {
             }
         }
 
+        getInput("(hit enter to continue)");
         clearTerminal();
 
         game.dealFive();
