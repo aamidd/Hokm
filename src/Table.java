@@ -34,6 +34,12 @@ public class Table {
         }
         return -1;
     }
+    public String getZamineStr() {
+        if (!cards.isEmpty()) {
+            return cards.getFirst().getSuitStr();
+        }
+        return null;
+    }
 
     public int determineWinner() {
         if (hokm == -1)
