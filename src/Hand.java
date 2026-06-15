@@ -23,7 +23,7 @@ public class Hand {
     }
 
     public void useCard(int cardNumber) {
-        useCard(cards.get(cardNumber - 1));
+        useCard(cards.get(cardNumber));
     }
 
     public int playCard(int cardNumber, int tableSuit) { // by table, I mean zamine
