@@ -10,6 +10,7 @@ public class Table {
         }
         cards.add(card);
     }
+    
     // sets the table to its initial stage
     public void purge() {
         cards.clear();
