@@ -19,6 +19,10 @@ public class Table {
         this.hokm = hokm;
     }
 
+    public int getHokm() {
+        return hokm;
+    }
+
     public int getZamine() {
         if (!cards.isEmpty()) {
             return cards.getFirst().getSuit();
