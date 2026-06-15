@@ -5,6 +5,7 @@ public class Hokm {
     private final ArrayList<Hand> hands = new ArrayList<>();
     private final Deck deck = new Deck();
     private int hokm = -1; // 0: Clubs, 1: Diamonds, 2: Hearts, 3: Spades
+    private final Table table = new Table();
 
     public Hokm() {
         deck.shuffle();
