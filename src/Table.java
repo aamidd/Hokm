@@ -5,9 +5,8 @@ public class Table {
     private int hokm = -1;
 
     public void addCard(Card card) {
-        if (cards.size() >= 4) {
-            purge();
-        }
+        if (isFull())
+            throw new IllegalStateException("Table is full");
         cards.add(card);
     }
 
@@ -59,6 +58,10 @@ public class Table {
             }
         }
         return winner;
+    }
+
+    public boolean isFull() {
+        return cards.size() == 4;
     }
 
     @Override
