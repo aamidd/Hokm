@@ -10,7 +10,7 @@ public class Table {
         }
         cards.add(card);
     }
-    
+
     // sets the table to its initial stage
     public void purge() {
         cards.clear();
@@ -36,6 +36,8 @@ public class Table {
     }
 
     public int determineWinner() {
+        if (hokm == -1)
+            throw new IllegalArgumentException("Hokm should be set before playing");
         int winner = 0;
         for (int i = 1; i < cards.size(); i++) {
             Card card1 = cards.get(winner);
