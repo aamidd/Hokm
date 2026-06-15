@@ -110,6 +110,13 @@ public class Hokm {
         }
     }
 
+    public void playCard(int playerIndex, int cardIndex) {
+        table.setHokm(getHokm());
+        Card card = hands.get(playerIndex).getCard(cardIndex);
+        table.addCard(card);
+        hands.get(playerIndex).playCard(cardIndex, table.getZamine());
+    }
+
     public ArrayList<Hand> getHands() {
         return hands;
     }
