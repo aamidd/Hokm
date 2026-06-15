@@ -6,9 +6,14 @@ public class Table {
 
     public void addCard(Card card) {
         if (cards.size() >= 4) {
-            cards.clear();
+            purge();
         }
         cards.add(card);
+    }
+    // sets the table to its initial stage
+    public void purge() {
+        cards.clear();
+        hokm = -1;
     }
 
     public void setHokm(int hokm) {
