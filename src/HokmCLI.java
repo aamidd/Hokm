@@ -59,6 +59,40 @@ public class HokmCLI {
             }
             System.out.println("Hokm should be a number between 1 and 4");
         }
+
+        /*
+            phase two:
+            players play their cards and the game continues.
+         */
+        game.dealRest();
+        int userIndex = 0;
+        while (true) {
+            User currentUser = game.getUser(userIndex);
+            turn(currentUser.getUsername());
+            System.out.println(game.getHands().get(userIndex));
+            while (true) {
+                String cardNumberStr = getInput("enter the card number: ");
+                if (!cardNumberStr.matches("\\d+")) {
+                    System.out.println("Please enter a valid card number.");
+                    continue;
+                }
+                int cardNumber = Integer.parseInt(cardNumberStr);
+                if (cardNumber < 1 || cardNumber > game.getHands().get(userIndex).getSize()) {
+                    System.out.printf("Card number should be between 1 and %d\n", game.getHands().get(userIndex).getSize());
+                    continue;
+                }
+                int status = game.playCard(userIndex, cardNumber - 1);
+                if (status == 1) {
+                    System.out.printf("You already have %s. so play it!\n", game.getTable().getZamineStr());
+                    continue;
+                }
+                break;
+            }
+            userIndex++;
+            userIndex %= 4;
+            getInput(String.format("(hit enter and hand the device to %s)", game.getUser(userIndex)));
+            clearTerminal();
+        }
     }
 
     // inform the user's turn and clear the screen
