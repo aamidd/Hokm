@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Table {
     private final ArrayList<Card> cards = new ArrayList<>(); // played cards
-    private final int hokm = -1;
+    private int hokm = -1;
 
     public void addCard(Card card) {
         if (cards.size() >= 4) {
