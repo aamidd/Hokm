@@ -6,10 +6,9 @@ public class Table {
 
     public void addCard(Card card) {
         if (cards.size() >= 4) {
-            throw new IllegalStateException("Table is full. max cards on the table is 4.");
-        } else {
-            cards.add(card);
+            cards.clear();
         }
+        cards.add(card);
     }
 
     public void setHokm(int hokm) {
