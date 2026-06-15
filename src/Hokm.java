@@ -114,8 +114,10 @@ public class Hokm {
     public int playCard(int playerIndex, int cardIndex) {
         table.setHokm(getHokm());
         Card card = hands.get(playerIndex).getCard(cardIndex);
-        table.addCard(card);
-        return hands.get(playerIndex).playCard(cardIndex, table.getZamine());
+        int status = hands.get(playerIndex).playCard(cardIndex, table.getZamine());
+        if (status == 0)
+            table.addCard(card);
+        return status;
     }
 
     public Table getTable() {
