@@ -118,6 +118,10 @@ public class Hokm {
         return hands.get(playerIndex).playCard(cardIndex, table.getZamine());
     }
 
+    public Table getTable() {
+        return table;
+    }
+
     public ArrayList<Hand> getHands() {
         return hands;
     }
