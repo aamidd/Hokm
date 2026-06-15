@@ -11,4 +11,11 @@ public class Table {
             cards.add(card);
         }
     }
+
+    public void setHokm(int hokm) {
+        if (hokm > 3 || hokm < 0) {
+            throw new IllegalArgumentException("Hokm should be between 0-3");
+        }
+        this.hokm = hokm;
+    }
 }
