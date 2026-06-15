@@ -36,6 +36,10 @@ public class HokmCLI {
     private void gameLoop() {
         showPlayersSitting();
 
+        /*
+          phase one:
+          the Hakem should choose their Hokm and then the rest of the game continues.
+         */
         game.dealFive();
         turn(game.getHakem().getUsername());
         System.out.println(game.getHakem());
