@@ -37,8 +37,8 @@ public class HokmCLI {
         showPlayersSitting();
 
         /*
-          phase one:
-          the Hakem should choose their Hokm and then the rest of the game continues.
+            phase one:
+            the Hakem should choose their Hokm and then the rest of the game continues.
          */
         game.dealFive();
         turn(game.getHakem().getUsername());
