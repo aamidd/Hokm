@@ -170,6 +170,10 @@ public class Hand {
         }
     }
 
+    public int getSize() {
+        return cards.size();
+    }
+
     @Override
     public String toString() {
         if (compactness == 0) {
