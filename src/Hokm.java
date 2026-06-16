@@ -122,6 +122,10 @@ public class Hokm {
         return status;
     }
 
+    public int determineWinner() {
+        return table.determineWinner();
+    }
+
     public Table getTable() {
         return table;
     }
