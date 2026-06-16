@@ -67,6 +67,8 @@ public class HokmCLI {
         game.dealRest();
         int userIndex = 0;
         while (true) {
+            if (game.isTableFull())
+                game.purgeTable();
             User currentUser = game.getUser(userIndex);
             turn(currentUser.getUsername());
             System.out.println(game.getHands().get(userIndex));
