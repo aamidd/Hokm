@@ -101,6 +101,10 @@ public class HokmCLI {
         }
     }
 
+    public boolean isNumber(String str) {
+        return !str.matches("\\d+");
+    }
+
     // inform the user's turn and clear the screen
     private void turn(String username) {
         getInput(String.format("(%s's turn. hit enter to reveal cards)", username));
