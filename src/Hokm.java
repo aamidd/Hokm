@@ -112,13 +112,16 @@ public class Hokm {
     }
 
     public int playCard(int playerIndex, int cardIndex) {
+        if (table.isFull())
+            table.purge();
         table.setHokm(getHokm());
         Card card = hands.get(playerIndex).getCard(cardIndex);
         int status = hands.get(playerIndex).playCard(cardIndex, table.getZamine());
         if (status == 0)
             table.addCard(card);
-        if (table.isFull())
+        if (table.isFull()) {
             return 2;
+        }
         return status;
     }
 
