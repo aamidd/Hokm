@@ -76,7 +76,7 @@ public class HokmCLI {
             System.out.println(game.getHands().get(userIndex));
             while (true) {
                 String cardNumberStr = getInput("enter the card number: ");
-                if (!cardNumberStr.matches("\\d+")) {
+                if (isNumber(cardNumberStr)) {
                     System.out.println("Please enter a valid card number.");
                     continue;
                 }
