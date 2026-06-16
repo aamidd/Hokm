@@ -126,6 +126,14 @@ public class Hokm {
         return table.determineWinner();
     }
 
+    public void purgeTable() {
+        table.purge();
+    }
+
+    public boolean isTableFull() {
+        return table.isFull();
+    }
+
     public Table getTable() {
         return table;
     }
