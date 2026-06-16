@@ -47,14 +47,18 @@ public class Table {
         for (int i = 1; i < cards.size(); i++) {
             Card card1 = cards.get(winner);
             Card card2 = cards.get(i);
-            if (card2.getSuit() != getZamine()) {
-                if (card2.getSuit() != getHokm())
-                    continue;
-                if (card1.getSuit() == getHokm()) {
+            if (card2.getSuit() == getHokm()) {
+                if (card1.getSuit() != getHokm()) {
+                    winner = i;
+                } else {
                     winner = card2.getRank() > card1.getRank() ? i : winner;
                 }
-            } else if (card1.getSuit() == getZamine()) {
-                    winner = card2.getRank() > card1.getRank() ? i : winner;
+            } else {
+                if (card2.getSuit() == getZamine()) {
+                    if (card1.getSuit() != getHokm()) {
+                        winner = card2.getRank() > card1.getRank() ? i : winner;
+                    }
+                }
             }
         }
         return winner;
