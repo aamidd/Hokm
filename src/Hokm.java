@@ -117,6 +117,8 @@ public class Hokm {
         int status = hands.get(playerIndex).playCard(cardIndex, table.getZamine());
         if (status == 0)
             table.addCard(card);
+        if (table.isFull())
+            return 2;
         return status;
     }
 
