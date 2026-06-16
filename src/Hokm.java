@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Hokm {
     private final ArrayList<User> users = new ArrayList<>();
     private final ArrayList<Hand> hands = new ArrayList<>();
+    private final ArrayList<Integer> scores = new ArrayList<>(); // scores for each game
+    private final ArrayList<Integer> totalScores = new ArrayList<>(); // scores in total
     private final Deck deck = new Deck();
     private int hokm = -1; // 0: Clubs, 1: Diamonds, 2: Hearts, 3: Spades
     private final Table table = new Table();
