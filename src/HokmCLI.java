@@ -87,6 +87,8 @@ public class HokmCLI {
                 if (status == 1) {
                     System.out.printf("You already have %s. so play it!\n", game.getTable().getZamineStr());
                     continue;
+                } else if (status == 2) {
+                    System.out.printf("winner: %s\n", game.getUser(game.determineWinner()));
                 }
                 break;
             }
