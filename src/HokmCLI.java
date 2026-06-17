@@ -135,9 +135,10 @@ public class HokmCLI {
 
     private String centerNameWithHokm(int userIndex) {
         String username = game.getUser(userIndex).getUsername();
-        String hokm = (game.getHokm() == -1) ? "" : game.getHokmStr();
-        String padding = " ".repeat(Math.max(0, (game.getHands().get(userIndex).getSize() * 6 - 1) / 2 - (username.length() + hokm.length()) / 2));
-        return padding + hokm + username + hokm;
+        String hokmL = (game.getHokm() == -1) ? "" : game.getHokmStr()+ " ";
+        String hokmR = (game.getHokm() == -1) ? "" : " " + game.getHokmStr();
+        String padding = " ".repeat(Math.max(0, (game.getHands().get(userIndex).getSize() * 6 - 1) / 2 - (username.length() + hokmR.length()*2) / 2));
+        return padding + hokmL + username + hokmR;
     }
 
     // inform the user's turn and clear the screen
