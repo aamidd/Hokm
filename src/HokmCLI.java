@@ -75,7 +75,8 @@ public class HokmCLI {
             System.out.println(game.getTable());
             System.out.println(centerName(userIndex));
             System.out.println(game.getHands().get(userIndex));
-            System.out.printf("Team 1: %d\nTeam 2: %d\n", game.getScore(0), game.getScore(1));
+            System.out.printf("%s & %s: %d\n%s & %s: %d\n", game.getUser(0), game.getUser(2), game.getScore(0),
+                    game.getUser(1), game.getUser(3), game.getScore(1));
             while (true) {
                 String cardNumberStr = getInput("enter the card number: ");
                 if (isNumber(cardNumberStr)) {
