@@ -42,7 +42,7 @@ public class HokmCLI {
          */
         game.dealFive();
         turn(game.getHakem().getUsername());
-        System.out.println(game.getHakem());
+        System.out.println(centerNameWithHokm(0));
         System.out.println(game.getHands().getFirst());
         System.out.println("You're the hakem. choose your hokm.");
         System.out.println("1: ♣  2: ♦  3: ♥  4: ♠");
@@ -73,7 +73,7 @@ public class HokmCLI {
             User currentUser = game.getUser(userIndex);
             turn(currentUser.getUsername());
             System.out.println(game.getTable());
-            System.out.println(centerName(userIndex));
+            System.out.println(centerNameWithHokm(userIndex));
             System.out.println(game.getHands().get(userIndex));
             System.out.printf("%s & %s: %d\n%s & %s: %d\n", game.getUser(0), game.getUser(2), game.getScore(0),
                     game.getUser(1), game.getUser(3), game.getScore(1));
@@ -119,10 +119,11 @@ public class HokmCLI {
         return !str.matches("\\d+");
     }
 
-    public String centerName(int userIndex) {
+    public String centerNameWithHokm(int userIndex) {
         String username = game.getUser(userIndex).getUsername();
-        String padding = " ".repeat(Math.max(0, (game.getHands().get(userIndex).getSize() * 6 - 1) / 2 - username.length() / 2));
-        return padding + username;
+        String hokm = (game.getHokm() == -1) ? "" : game.getHokmStr();
+        String padding = " ".repeat(Math.max(0, (game.getHands().get(userIndex).getSize() * 6 - 1) / 2 - (username.length() + hokm.length()) / 2));
+        return padding + hokm + username + hokm;
     }
 
     // inform the user's turn and clear the screen
