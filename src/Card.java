@@ -68,7 +68,9 @@ public class Card {
             return "♦";
         if (suit == 2)
             return "♥";
-        return "♠";
+        if (suit == 3)
+            return "♠";
+        return null;
     }
 
     public String getSuitStr() {
