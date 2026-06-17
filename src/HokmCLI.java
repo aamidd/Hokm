@@ -65,7 +65,7 @@ public class HokmCLI {
                     game.getUser(1), game.getUser(3), game.getScore(1));
             while (true) {
                 String cardNumberStr = getInput("enter the card number: ");
-                if (isNumber(cardNumberStr)) {
+                if (!isNumber(cardNumberStr)) {
                     System.out.println("Please enter a valid card number.");
                     continue;
                 }
@@ -130,7 +130,7 @@ public class HokmCLI {
     }
 
     public boolean isNumber(String str) {
-        return !str.matches("\\d+");
+        return str.matches("\\d+");
     }
 
     public String centerNameWithHokm(int userIndex) {
