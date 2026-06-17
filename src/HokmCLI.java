@@ -49,7 +49,7 @@ public class HokmCLI {
         phaseTwoLoop();
     }
 
-    public void phaseTwoLoop() {
+    private void phaseTwoLoop() {
         game.dealRest();
         int userIndex = 0;
         int starterIndex = 0;
@@ -102,12 +102,12 @@ public class HokmCLI {
         }
     }
 
-    public void printInfoOf(int userIndex) {
+    private void printInfoOf(int userIndex) {
         System.out.println(centerNameWithHokm(userIndex));
         System.out.println(game.getHands().get(userIndex));
     }
 
-    public void chooseHokm() {
+    private void chooseHokm() {
         game.dealFive();
         turn(game.getHakem().getUsername());
         System.out.println(centerNameWithHokm(0));
@@ -129,11 +129,11 @@ public class HokmCLI {
         }
     }
 
-    public boolean isNumber(String str) {
+    private boolean isNumber(String str) {
         return str.matches("\\d+");
     }
 
-    public String centerNameWithHokm(int userIndex) {
+    private String centerNameWithHokm(int userIndex) {
         String username = game.getUser(userIndex).getUsername();
         String hokm = (game.getHokm() == -1) ? "" : game.getHokmStr();
         String padding = " ".repeat(Math.max(0, (game.getHands().get(userIndex).getSize() * 6 - 1) / 2 - (username.length() + hokm.length()) / 2));
