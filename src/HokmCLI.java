@@ -40,26 +40,7 @@ public class HokmCLI {
             phase one:
             the Hakem should choose their Hokm and then the rest of the game continues.
          */
-        game.dealFive();
-        turn(game.getHakem().getUsername());
-        System.out.println(centerNameWithHokm(0));
-        System.out.println(game.getHands().getFirst());
-        System.out.println("You're the hakem. choose your hokm.");
-        System.out.println("1: ♣  2: ♦  3: ♥  4: ♠");
-        while (true) {
-            String hokmStr = getInput("> ");
-            if (hokmStr.length() == 1) {
-                if (Character.isDigit(hokmStr.charAt(0))) {
-                    int hokm = Integer.parseInt(hokmStr);
-                    if (hokm <= 4 && hokm >= 1) {
-                        game.setHokm(hokm - 1);
-                        break;
-                    }
-                }
-            }
-            System.out.println("Hokm should be a number between 1 and 4");
-        }
-
+        chooseHokm();
         /*
             phase two:
             players play their cards and the game continues.
@@ -112,6 +93,28 @@ public class HokmCLI {
             userIndex %= 4;
             getInput(String.format("(hit enter and hand the device to %s)", game.getUser(userIndex)));
             clearTerminal();
+        }
+    }
+
+    public void chooseHokm() {
+        game.dealFive();
+        turn(game.getHakem().getUsername());
+        System.out.println(centerNameWithHokm(0));
+        System.out.println(game.getHands().getFirst());
+        System.out.println("You're the hakem. choose your hokm.");
+        System.out.println("1: ♣  2: ♦  3: ♥  4: ♠");
+        while (true) {
+            String hokmStr = getInput("> ");
+            if (hokmStr.length() == 1) {
+                if (Character.isDigit(hokmStr.charAt(0))) {
+                    int hokm = Integer.parseInt(hokmStr);
+                    if (hokm <= 4 && hokm >= 1) {
+                        game.setHokm(hokm - 1);
+                        break;
+                    }
+                }
+            }
+            System.out.println("Hokm should be a number between 1 and 4");
         }
     }
 
