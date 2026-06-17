@@ -58,7 +58,7 @@ public class HokmCLI {
                 game.purgeTable();
             User currentUser = game.getUser(userIndex);
             turn(currentUser.getUsername());
-            System.out.println(game.getTable());
+            printTable();
             printInfoOf(userIndex);
             // print the teams with the name of each player of that team
             System.out.printf("%s & %s: %d\n%s & %s: %d\n", game.getUser(0), game.getUser(2), game.getScore(0),
@@ -82,7 +82,7 @@ public class HokmCLI {
                     starterIndex += game.determineWinner();
                     starterIndex %= 4;
                     clearTerminal();
-                    System.out.println(game.getTable());
+                    printTable();
                     System.out.printf("%s took this hand.\n", game.getUser(starterIndex));
                     game.addScoreTo(userIndex % 2); // this way users 0 & 2 are in team 0 and users 1 & 3 are in team 1
                     userIndex = starterIndex - 1;
@@ -102,6 +102,10 @@ public class HokmCLI {
             getInput(String.format("(hit enter and hand the device to %s)", game.getUser(userIndex)));
             clearTerminal();
         }
+    }
+
+    private void printTable() {
+        System.out.println(game.getTable());
     }
 
     private void printInfoOf(int userIndex) {
@@ -141,7 +145,7 @@ public class HokmCLI {
         String hokmR = (game.getHokm() == -1) ? "" : " " + game.getHokmStr();
         int handLength = (game.getHands().get(userIndex).getSize() * 6 - 1);
         int displayNameLength = (username.length() + hokmR.length() * 2);
-        String padding = " ".repeat(Math.max(0, (handLength -  displayNameLength) / 2));
+        String padding = " ".repeat(Math.max(0, (handLength - displayNameLength) / 2));
         return padding + hokmL + username + hokmR;
     }
 
