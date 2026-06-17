@@ -66,6 +66,7 @@ public class HokmCLI {
          */
         game.dealRest();
         int userIndex = 0;
+        int starterIndex = 0;
         while (true) {
             if (game.isTableFull())
                 game.purgeTable();
