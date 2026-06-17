@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Hokm {
     private final ArrayList<User> users = new ArrayList<>();
     private final ArrayList<Hand> hands = new ArrayList<>();
-    private final ArrayList<Integer> scores = new ArrayList<>(); // scores for each game
+    private final ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(0, 0)); // scores for each game
     private final ArrayList<Integer> totalScores = new ArrayList<>(); // scores in total
     private final Deck deck = new Deck();
     private int hokm = -1; // 0: Clubs, 1: Diamonds, 2: Hearts, 3: Spades
@@ -149,5 +150,17 @@ public class Hokm {
 
     public Deck getDeck() {
         return deck;
+    }
+
+    public void addScoreTo(int team) {
+        if (team != 0 && team != 1)
+            throw new IllegalArgumentException("teams can only be 0 or 1");
+        scores.set(team, scores.get(team) + 1);
+    }
+
+    public int getScore(int team) {
+        if (team != 0 && team != 1)
+            throw new IllegalArgumentException("teams can only be 0 or 1");
+        return scores.get(team);
     }
 }
