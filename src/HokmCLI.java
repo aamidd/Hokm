@@ -90,7 +90,11 @@ public class HokmCLI {
                     System.out.printf("You already have %s. so play it!\n", game.getTable().getZamineStr());
                     continue;
                 } else if (status == 2) {
-                    System.out.printf("winner: %s\n", game.getUser(game.determineWinner()));
+                    starterIndex += game.determineWinner();
+                    starterIndex %= 4;
+                    System.out.printf("%s took this hand.\n", game.getUser(starterIndex));
+                    game.addScoreTo(userIndex % 2); // this way users 0 & 2 are in team 0 and users 1 & 3 are in team 1
+                    userIndex = starterIndex - 1;
                 }
                 break;
             }
