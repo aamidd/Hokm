@@ -105,6 +105,12 @@ public class HokmCLI {
         return !str.matches("\\d+");
     }
 
+    public String centerName(int userIndex) {
+        String username = game.getUser(userIndex).getUsername();
+        String padding = " ".repeat(Math.max(0, (game.getHands().get(userIndex).getSize() * 6 - 1) / 2 - username.length() / 2));
+        return padding + username;
+    }
+
     // inform the user's turn and clear the screen
     private void turn(String username) {
         getInput(String.format("(%s's turn. hit enter to reveal cards)", username));
