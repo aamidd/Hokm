@@ -41,10 +41,15 @@ public class HokmCLI {
             the Hakem should choose their Hokm and then the rest of the game continues.
          */
         chooseHokm();
+
         /*
             phase two:
             players play their cards and the game continues.
          */
+        phaseTwoLoop();
+    }
+
+    public void phaseTwoLoop() {
         game.dealRest();
         int userIndex = 0;
         int starterIndex = 0;
@@ -54,8 +59,8 @@ public class HokmCLI {
             User currentUser = game.getUser(userIndex);
             turn(currentUser.getUsername());
             System.out.println(game.getTable());
-            System.out.println(centerNameWithHokm(userIndex));
-            System.out.println(game.getHands().get(userIndex));
+            printInfoOf(userIndex);
+            // print the teams with the name of each player of that team
             System.out.printf("%s & %s: %d\n%s & %s: %d\n", game.getUser(0), game.getUser(2), game.getScore(0),
                     game.getUser(1), game.getUser(3), game.getScore(1));
             while (true) {
@@ -82,6 +87,7 @@ public class HokmCLI {
                 }
                 break;
             }
+            // check if any team has won
             int score0 = game.getScore(0);
             int score1 = game.getScore(1);
             if (score0 == 7 || score1 == 7) {
@@ -94,6 +100,11 @@ public class HokmCLI {
             getInput(String.format("(hit enter and hand the device to %s)", game.getUser(userIndex)));
             clearTerminal();
         }
+    }
+
+    public void printInfoOf(int userIndex) {
+        System.out.println(centerNameWithHokm(userIndex));
+        System.out.println(game.getHands().get(userIndex));
     }
 
     public void chooseHokm() {
