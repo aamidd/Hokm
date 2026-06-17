@@ -81,8 +81,8 @@ public class HokmCLI {
                 } else if (status == 2) {
                     starterIndex += game.determineWinner();
                     starterIndex %= 4;
-		    clearTerminal();
-		    System.out.println(game.getTable());
+                    clearTerminal();
+                    System.out.println(game.getTable());
                     System.out.printf("%s took this hand.\n", game.getUser(starterIndex));
                     game.addScoreTo(userIndex % 2); // this way users 0 & 2 are in team 0 and users 1 & 3 are in team 1
                     userIndex = starterIndex - 1;
