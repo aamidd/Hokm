@@ -135,9 +135,11 @@ public class HokmCLI {
 
     private String centerNameWithHokm(int userIndex) {
         String username = game.getUser(userIndex).getUsername();
-        String hokmL = (game.getHokm() == -1) ? "" : game.getHokmStr()+ " ";
+        String hokmL = (game.getHokm() == -1) ? "" : game.getHokmStr() + " ";
         String hokmR = (game.getHokm() == -1) ? "" : " " + game.getHokmStr();
-        String padding = " ".repeat(Math.max(0, (game.getHands().get(userIndex).getSize() * 6 - 1) / 2 - (username.length() + hokmR.length()*2) / 2));
+        int handLength = (game.getHands().get(userIndex).getSize() * 6 - 1);
+        int displayNameLength = (username.length() + hokmR.length() * 2);
+        String padding = " ".repeat(Math.max(0, (handLength -  displayNameLength) / 2));
         return padding + hokmL + username + hokmR;
     }
 
