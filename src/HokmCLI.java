@@ -72,7 +72,7 @@ public class HokmCLI {
             User currentUser = game.getUser(userIndex);
             turn(currentUser.getUsername());
             System.out.println(game.getTable());
-            System.out.println(game.getUser(userIndex));
+            System.out.println(centerName(userIndex));
             System.out.println(game.getHands().get(userIndex));
             while (true) {
                 String cardNumberStr = getInput("enter the card number: ");
