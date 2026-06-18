@@ -90,12 +90,9 @@ public class HokmCLI {
                 break;
             }
             // check if any team has won
-            int score0 = game.getScore(0);
-            int score1 = game.getScore(1);
-            if (score0 == 7 || score1 == 7) {
-                int winnerTeam = score0 == 7 ? 0 : 1;
+            int winnerTeam = game.getHandWinner();
+            if (winnerTeam != -1) {
                 System.out.printf("%s and %s won!\n", game.getUser(winnerTeam), game.getUser(winnerTeam + 2));
-                break;
             }
             userIndex++;
             userIndex %= 4;
