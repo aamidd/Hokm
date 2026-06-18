@@ -56,13 +56,13 @@ public class HokmCLI {
         while (true) {
             if (game.isTableFull())
                 game.purgeTable();
-            User currentUser = game.getUser(userIndex);
+            User currentUser = game.getPlayer(userIndex);
             turn(currentUser.getUsername());
             printTable();
             printInfoOf(userIndex);
             // print the teams with the name of each player of that team
-            System.out.printf("%s & %s: %d\n%s & %s: %d\n", game.getUser(0), game.getUser(2), game.getScore(0),
-                    game.getUser(1), game.getUser(3), game.getScore(1));
+            System.out.printf("%s & %s: %d\n%s & %s: %d\n", game.getPlayer(0), game.getPlayer(2), game.getScore(0),
+                    game.getPlayer(1), game.getPlayer(3), game.getScore(1));
             while (true) {
                 String cardNumberStr = getInput("enter the card number: ");
                 if (!isNumber(cardNumberStr)) {
@@ -83,20 +83,20 @@ public class HokmCLI {
                     starterIndex %= 4;
                     clearTerminal();
                     printTable();
-                    System.out.printf("%s took this hand.\n", game.getUser(starterIndex));
+                    System.out.printf("%s took this hand.\n", game.getPlayer(starterIndex));
                     game.addScoreTo(starterIndex % 2); // this way users 0 & 2 are in team 0 and users 1 & 3 are in team 1
                     userIndex = starterIndex - 1;
                 }
                 break;
             }
             // check if any team has won
-            int winnerTeam = game.getHandWinner();
+            int winnerTeam = game.handWinner();
             if (winnerTeam != -1) {
-                System.out.printf("%s and %s won!\n", game.getUser(winnerTeam), game.getUser(winnerTeam + 2));
+                System.out.printf("%s and %s won!\n", game.getPlayer(winnerTeam), game.getPlayer(winnerTeam + 2));
             }
             userIndex++;
             userIndex %= 4;
-            getInput(String.format("(hit enter and hand the device to %s)", game.getUser(userIndex)));
+            getInput(String.format("(hit enter and hand the device to %s)", game.getPlayer(userIndex)));
             clearTerminal();
         }
     }
@@ -137,7 +137,7 @@ public class HokmCLI {
     }
 
     private String centerNameWithHokm(int userIndex) {
-        String username = game.getUser(userIndex).getUsername();
+        String username = game.getPlayer(userIndex).getUsername();
         String hokmL = (game.getHokm() == -1) ? "" : game.getHokmStr() + " ";
         String hokmR = (game.getHokm() == -1) ? "" : " " + game.getHokmStr();
         int handLength = (game.getHands().get(userIndex).getSize() * 6 - 1);
@@ -184,10 +184,10 @@ public class HokmCLI {
                 continue;
             }
 
-            User user1 = game.getUser(index1);
-            User user2 = game.getUser(index2);
-            User user3 = game.getUser(index3);
-            User user4 = game.getUser(index4);
+            User user1 = game.getPlayer(index1);
+            User user2 = game.getPlayer(index2);
+            User user3 = game.getPlayer(index3);
+            User user4 = game.getPlayer(index4);
             game.chooseTeams(user1, user2, user3, user4);
             break;
         }
@@ -204,12 +204,12 @@ public class HokmCLI {
                 userIndex = (userIndex + 1) % 4;
                 continue;
             }
-            System.out.printf("%s:\n%s\n", game.getUser(userIndex).getUsername(), deck.peek(index));
+            System.out.printf("%s:\n%s\n", game.getPlayer(userIndex).getUsername(), deck.peek(index));
             if (deck.peek(index).getRank() == 14) {
                 if (hakemIndex != -1)
                     break;
                 hakemIndex = userIndex;
-                System.out.println(game.getUser(hakemIndex).getUsername() + " is the Hakem!");
+                System.out.println(game.getPlayer(hakemIndex).getUsername() + " is the Hakem!");
                 wait = 2000;
             }
             index--;
@@ -225,10 +225,10 @@ public class HokmCLI {
     }
 
     private void showPlayersSitting() {
-        String topName = game.getUser(0).getUsername();
-        String leftName = game.getUser(1).getUsername();
-        String bottomName = game.getUser(2).getUsername();
-        String rightName = game.getUser(3).getUsername();
+        String topName = game.getPlayer(0).getUsername();
+        String leftName = game.getPlayer(1).getUsername();
+        String bottomName = game.getPlayer(2).getUsername();
+        String rightName = game.getPlayer(3).getUsername();
 
         int leftUserLength = leftName.length();
         int maxMiddleLength = Math.max(topName.length(), bottomName.length());

@@ -5,7 +5,7 @@ public class Hokm {
     private final ArrayList<User> users = new ArrayList<>();
     private final ArrayList<Hand> hands = new ArrayList<>();
     private final ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(0, 0)); // scores for each game
-    private final ArrayList<Integer> totalScores = new ArrayList<>(); // scores in total
+    private final ArrayList<Integer> totalScores = new ArrayList<>(Arrays.asList(0, 0)); // scores in total
     private final Deck deck = new Deck();
     private int hokm = -1; // 0: Clubs, 1: Diamonds, 2: Hearts, 3: Spades
     private final Table table = new Table();
@@ -165,14 +165,23 @@ public class Hokm {
         return scores.get(team);
     }
 
-    public int getHandWinner() {
+    /*
+        check for the hand winner and
+     */
+    public int handWinner() {
         if (getScore(0) == 7 && getScore(1) == 7) {
             throw new IllegalStateException("Both teams can't be 7 at the same time");
         }
-        if (getScore(0) == 7)
+        if (getScore(0) == 7) {
+            totalScores.set(0, totalScores.getFirst() + 1);
+            lastWinner = 0;
             return 0;
-        if (getScore(1) == 7)
+        }
+        if (getScore(1) == 7) {
+            totalScores.set(0, totalScores.getLast() + 1);
+            lastWinner = 1;
             return 1;
+        }
         return -1;
     }
 }
