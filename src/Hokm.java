@@ -65,6 +65,10 @@ public class Hokm {
         return getPlayer(0);
     }
 
+    public User getUser(int index) {
+        return users.get(index);
+    }
+
     public ArrayList<User> getUsers() {
         return users;
     }
