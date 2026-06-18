@@ -185,6 +185,17 @@ public class Hokm {
         return -1;
     }
 
+    public void finishHand() {
+        int winner = getHandWinner();
+        if (winner == -1)
+            throw new IllegalStateException("Hand winner has not been determined yet");
+
+        int winnerTeamIndex = (lastWinner + winner) % 2;
+        totalScores.set(winnerTeamIndex, totalScores.get(winnerTeamIndex) + 1);
+        if (lastWinner != winnerTeamIndex)
+            lastWinner++;
+    }
+
     public int getTotalScore(int team) {
         if (team != 0 && team != 1)
             throw new IllegalArgumentException("teams can only be 0 or 1");
