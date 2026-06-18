@@ -172,7 +172,7 @@ public class Hokm {
     /*
         check for the hand winner
      */
-    public int handWinner() {
+    public int getHandWinner() {
         if (getScore(0) == 7 && getScore(1) == 7) {
             throw new IllegalStateException("Both teams can't be 7 at the same time");
         }
