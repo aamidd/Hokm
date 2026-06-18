@@ -9,6 +9,7 @@ public class Hokm {
     private final Deck deck = new Deck();
     private int hokm = -1; // 0: Clubs, 1: Diamonds, 2: Hearts, 3: Spades
     private final Table table = new Table();
+    private int lastWinner = 0;
 
     public Hokm() {
         deck.shuffle();
@@ -56,12 +57,12 @@ public class Hokm {
         users.set(3, teammate2);
     }
 
-    public User getUser(int index) {
-        return users.get(index);
+    public User getPlayer(int index) {
+        return users.get((index + lastWinner) % 4);
     }
 
     public User getHakem() {
-        return getUser(0);
+        return getPlayer(0);
     }
 
     public ArrayList<User> getUsers() {
