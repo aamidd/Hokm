@@ -163,4 +163,15 @@ public class Hokm {
             throw new IllegalArgumentException("teams can only be 0 or 1");
         return scores.get(team);
     }
+
+    public int getHandWinner() {
+        if (getScore(0) == 7 && getScore(1) == 7) {
+            throw new IllegalStateException("Both teams can't be 7 at the same time");
+        }
+        if (getScore(0) == 7)
+            return 0;
+        if (getScore(1) == 7)
+            return 1;
+        return -1;
+    }
 }
