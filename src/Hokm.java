@@ -166,7 +166,7 @@ public class Hokm {
     }
 
     /*
-        check for the hand winner and
+        check for the hand winner
      */
     public int handWinner() {
         if (getScore(0) == 7 && getScore(1) == 7) {
