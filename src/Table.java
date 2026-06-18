@@ -43,6 +43,8 @@ public class Table {
     public int determineWinner() {
         if (hokm == -1)
             throw new IllegalArgumentException("Hokm should be set before playing");
+        if (!isFull())
+            throw new IllegalStateException("Table is not full");
         int winner = 0;
         for (int i = 1; i < cards.size(); i++) {
             Card card1 = cards.get(winner);
