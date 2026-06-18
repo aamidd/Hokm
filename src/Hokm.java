@@ -177,13 +177,9 @@ public class Hokm {
             throw new IllegalStateException("Both teams can't be 7 at the same time");
         }
         if (getScore(0) == 7) {
-            totalScores.set(lastWinner % 2, totalScores.getFirst() + 1);
-            lastWinner = 0;
             return 0;
         }
         if (getScore(1) == 7) {
-            totalScores.set((lastWinner + 1) % 2, totalScores.getLast() + 1);
-            lastWinner = 1;
             return 1;
         }
         return -1;
