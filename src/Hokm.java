@@ -184,4 +184,10 @@ public class Hokm {
         }
         return -1;
     }
+
+    public int getTotalScore(int team) {
+        if (team != 0 && team != 1)
+            throw new IllegalArgumentException("teams can only be 0 or 1");
+        return totalScores.get(team);
+    }
 }
