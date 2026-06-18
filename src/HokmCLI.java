@@ -36,17 +36,24 @@ public class HokmCLI {
     private void gameLoop() {
         showPlayersSitting();
 
-        /*
-            phase one:
-            the Hakem should choose their Hokm and then the rest of the game continues.
-         */
-        chooseHokm();
+        while (game.getGameWinner() == -1) {
+            /*
+                phase one:
+                the Hakem should choose their Hokm and then the rest of the game continues.
+            */
+            chooseHokm();
 
-        /*
-            phase two:
-            players play their cards and the game continues.
-         */
-        phaseTwoLoop();
+            /*
+                phase two:
+                players play their cards and the game continues.
+            */
+            phaseTwoLoop();
+            System.out.printf("%s & %s: %d\n", game.getUser(0), game.getUser(2), game.getTotalScore(0));
+            System.out.printf("%s & %s: %d\n", game.getUser(1), game.getUser(3), game.getTotalScore(1));
+            game.reset();
+        }
+        int gameWinner = game.getGameWinner();
+        System.out.printf("\nGame winner: %s & %s\n", game.getUser(gameWinner), game.getUser(gameWinner + 2));
     }
 
     private void phaseTwoLoop() {
