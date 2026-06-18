@@ -84,7 +84,7 @@ public class HokmCLI {
                     clearTerminal();
                     printTable();
                     System.out.printf("%s took this hand.\n", game.getUser(starterIndex));
-                    game.addScoreTo(userIndex % 2); // this way users 0 & 2 are in team 0 and users 1 & 3 are in team 1
+                    game.addScoreTo(starterIndex % 2); // this way users 0 & 2 are in team 0 and users 1 & 3 are in team 1
                     userIndex = starterIndex - 1;
                 }
                 break;
