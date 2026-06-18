@@ -93,6 +93,7 @@ public class HokmCLI {
             int winnerTeam = game.getHandWinner();
             if (winnerTeam != -1) {
                 System.out.printf("%s and %s won!\n", game.getPlayer(winnerTeam), game.getPlayer(winnerTeam + 2));
+                game.finishHand();
                 break;
             }
             userIndex++;
