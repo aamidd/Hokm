@@ -214,4 +214,13 @@ public class Hokm {
         }
         return -1;
     }
+
+    public void reset() {
+        hands.clear();
+        scores.set(0, 0);
+        scores.set(1, 0);
+        deck = new Deck();
+        deck.shuffle();
+        table = new Table();
+    }
 }
